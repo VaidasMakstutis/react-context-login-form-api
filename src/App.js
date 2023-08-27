@@ -1,7 +1,14 @@
+import React, { useState } from "react";
+import Login from "./Components/Login";
+import Profile from "./Components/Profile";
+import { LoginContext } from "./Contexts/LoginContext";
+
 const App = () => {
+  const [showProfile, setShowProfile] = useState(false);
+  const [userName, setUserName] = useState("");
   return (
     <div className="App">
-      <h2>React Context Login Form Api</h2>
+      <LoginContext.Provider value={{ userName, setUserName, setShowProfile }}>{showProfile ? <Profile /> : <Login />}</LoginContext.Provider>
     </div>
   );
 };
